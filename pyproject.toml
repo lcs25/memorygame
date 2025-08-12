@@ -3,5 +3,5 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "typinggame"
+name = "memorygame"
 version = "0.1.0"
