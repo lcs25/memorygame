@@ -1,0 +1,98 @@
+(R.F.I) Precision of language:
+
+        Original sentence:
+            Bennet, whose dislike of his general behaviour was sharpened into particular resentment by his having slighted one of her daughters.
+
+        My sentence:
+            Bennet, whose dislike of his general behaviour had turned into resentment at his having slighted one of her daughters.
+
+        Sharpened and particular communicate the idea a lot better.
+
+        Escalated could have work, but it does sound more modern.
+
+        Was exacerbated works well, but is more abstract. Also, sharpened conveys the idea of wanting to retaliate better.
+
+        Soured would work too, except soured implies that the thing we're referring to was once 'good', and since we can't say, "Bennet, whose neutral opinion of Darcy soured into dislike by his having slighted one of her daughters." (because that would misrepresent what she actually felt, although the current sentence is also a slight misrepresentation )
+        it doesn't actually fit well here.
+
+        Aggravated is okay, somewhat less abstract exacerbated, but not a poignant as sharpened
+
+(R.F.I) Precision of language: Subtle/unsubtle implications
+
+        Tomas, who had spent the last ten years of his medical practice working exclusively with the human brain, knew that there was nothing more difficult to capture than the human I.
+
+        Tomas, who had been working for 2 years with the human brain, knew that one of the most difficult part to capture was the I.
+
+        There's an implication that his choice of working exclusively with the brain for 10 years relates somehow to the fact that the elusive I is difficult to capture
+        'spent' makes it sound like a chore, and that he spent 10 years devoted to it ('exclusively') implies above average expertise.
+
+(R.F.I) Precision of language: Descriptions that don't describe.
+
+        No, not at all, said Tereza, looking at the wall covered with bookshelves.
+        
+        No, not at all, said Tereza, looking at the wall full of books.
+
+        ~beware of descriptions that you can't visualize~
+
+(Reminder) Precision of language: When underpunctuation is the right call.
+        And at some point, he realized to his great surprise that he was not particularly unhappy.
+        And at some point, he realized, to his great surprise, that he was not particularly unhappy.
+        And at some point he realized--to his great surprise--that he was not particularly unhappy.
+
+        punctuation matters
+
+        And at  some point, he realized to his great surprise that he was not particularly unhappy.
+        And at some point he realized--to his great surprise--that he was not particularly unhappy.
+
+        Yeah, the original flows much better in this case, but my intuition says it's underpunctuated -- maybe short to medium sentences
+        can truly only take one split
+
+(**Improvement**) Precision of language: Add a few steps to smooth the sentence out.
+        Most earnestly did she then entreaty him to lose no more time before he wrote.
+        Most earnestly did she entreat that he write as soon as he could.
+
+(Room D) Rooms and object/people placements:
+
+        at the very end
+        at the other end
+
+
+(Face D) Descriptions of faces/expressions:
+
+    Dumbledore smiled at the look of amazement on Harry’s face. (Teasing/mocking)
+    Dumbledore smiled at the look of amazement in Harry's eyes. (Earnest)
+
+(Room D) Rooms and object/people placements: Descriptions that don't describe.
+
+    They were looking straight into the eyes of a monstrous dog, a dog that filled the whole space between ceiling and floor.
+    They were looking straight at the eyes of a monstrous dog, a dog that filled the room from floor to ceiling.
+
+    Both of these are imperfect. I will not elaborate.
+
+    (Side note: how do you explain to someone that you don't know if you don't know the answer but since you should know, because you asked the question, it's weird to
+    say you don't know, but you don't wanna lie about knowing (cuz that could get you into trouble) but you actually don't have enough information to even guess whether you know it or not
+    without putting in more effort than you've estimated the question merits,
+     like the best you can measure is an exact 50-50 probability, do you give yourself the street cred or do
+    do you tell the truth, mind you, if they ask you to prove you knew, you are easily able to admit that you did not know if you knew (so not as punitive)
+    because you will definitely be able to either a) make a convincing argument for why you thought you knew if you were wrong b) show that you knew
+     how to know by getting to the knowing place and showing them the roadmap?
+
+     Mind you, these are types of questions which you constantly improve at answering but the not knowing part sticks with you
+     so it gets easier and easier to convince people--for sure--that you don't know when you actually do know and it gets annoying )
+
+Nuance: this one is interesting, my sentence to me reads like he's annoyed with himself for his lack of still,
+        whereas the original sentence really is about the single instance, that's actually a pretty powerful distinction woah
+    
+    Original_sentence:  Wishing he’d been a bit quicker at thinking up some story, Harry left the library.
+    My sentence:  Wishing he'd been a bit quicker at coming up with some story, Harry left the library.
+
+Reminder: remember to punctuatate in the context of the story you're in the middle of telling, not by universal rules.
+
+    Original_sentence:  But even with Karenin's help Tomas failed to make her happy.
+    My sentence:  But, even with Karenina's help, tomas failed to make her happy.
+
+Emphasis: what roused her?
+
+     At length, however, the remarks of her companions on her absence of mind aroused her, and she felt the necessity of appearing more like herself.
+    My sentence:  At length, however, her companion's remarks about her absence of mind aroused her, and she felt the need to appear more present.
+
