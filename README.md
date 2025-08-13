@@ -19,7 +19,7 @@ Books:
 Gameplay config(s):
 - PASSAGE_COUNT – Number of sentences the user is shown per round (default: 3)
 - PASSAGE_LENGTH -- Length of the passages user is shown (default: min 40 chars, a decent sized sentence.)
-- ROUNDS_PER_GAME -- Round many rounds the game last.
+- ROUNDS_PER_GAME -- What is sounds like, have many rounds there are per game.
 
 ## Setup
 ```bash
