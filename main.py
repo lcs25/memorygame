@@ -1,5 +1,4 @@
 from src.Engine import GameEngine
-from src.models.Library import Library
 
 def main():
     game = GameEngine()
