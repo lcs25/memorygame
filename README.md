@@ -26,3 +26,4 @@ Gameplay config(s):
 git clone <repo-url>
 cd memorygame
 pip install .
+python main.py
