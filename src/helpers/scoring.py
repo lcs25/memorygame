@@ -3,7 +3,7 @@ from src.helpers.constants import WORDS_PER_MINUTE, SENTENCE, SUBMISSION, OPTION
 from src.config.config import c, OUTPUT_PATH, OUTPUT_FILE
 
 def score_attempt(sentence, submission):
-    distance = edit_distance(submission, sentence)
+    distance = edit_distance_2(submission, sentence)
     slen = len(sentence)
     score = round(((slen - distance)/slen) * 100, 2)
     return '{}{}'.format(score, '%')
@@ -22,8 +22,7 @@ def parse_results(original_sentence, usr_input, score, time_elapsed):
 
 def write_text_to_output_file(text, output_folder):
     output_file = open(c(OUTPUT_PATH) + OUTPUT_FILE, "+a")
-    output_file.write(text)
-    output_file.write('\n\n')
+    output_file.write(text + '\n\n')
 
 def parse_options(sentences):
     options = []
@@ -33,6 +32,30 @@ def parse_options(sentences):
         options.append('\n')
 
     return options
+
+def edit_distance_2(a, b):
+        # Ensure 'a' is the shorter string to minimize space
+    if len(a) > len(b):
+        a, b = b, a
+
+    m, n = len(a), len(b)
+
+    prev = list(range(m + 1))  
+    curr = [0] * (m + 1)
+
+    for j in range(1, n + 1):
+        curr[0] = j  
+        for i in range(1, m + 1):
+            cost = 0 if a[i - 1] == b[j - 1] else 1
+            curr[i] = min(
+                prev[i] + 1,      
+                curr[i - 1] + 1,  
+                prev[i - 1] + cost  
+            )
+        prev, curr = curr, prev
+
+    return prev[m]
+
 
 def edit_distance(curr, target):
     if len(curr) == 0:
