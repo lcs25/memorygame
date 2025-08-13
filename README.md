@@ -5,7 +5,7 @@ A simple memory game meant to improve the user's recall and typing speed.
 - Flashes a set of sentences from the books in `src/data/books/`
 - Scores the user's ability to recall the passage they pick.
 - Tracks user score and performance.
-- Meant to be played on the console, but also has a Modular IO system for flexible input/output handling,
+- I play it on the console, but it was designed to be easily adaptable to any input/output handling, and at some point soon I'll add a simple UI that it will look just like a terminal window.
 
 ## Configuration
 All configs are defined in `src/config/config.py`, 
@@ -26,4 +26,4 @@ Gameplay config(s):
 git clone <repo-url>
 cd memorygame
 pip install .
-python3 main.py (or python main.py)
+python main.py
