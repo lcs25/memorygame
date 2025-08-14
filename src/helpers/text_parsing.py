@@ -3,9 +3,10 @@ import re
 from src.helpers.constants import COMPARISON_REGEX
 from src.config.config import c, PASSAGE_MIN_LENGTH
 p_min = c(PASSAGE_MIN_LENGTH)
-MIN = rf"[A-Z][a-z]{{2,}}[^.!?]{{{p_min},}}[.!?]"
+MIN = rf"(?<=\.\s)[A-Z][a-z]{{2,}}[^.!?]{{{p_min},}}\s[a-z]+[.!?][\.\s]"
 
 def get_all_sentences(text):
+    
     sentences = re.findall(MIN, text)
     return [streamline_sentence(sentence) for sentence in sentences]
 

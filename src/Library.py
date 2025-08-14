@@ -16,12 +16,17 @@ class Library:
             content = get_text(f)
             self.books[str(f)] = content
 
-    def get_random_sentences(self):
+    def get_random_sentences(self, count):
         sentences = []
-        for title in self.books:
-            text = self.books[title]
-            rd = random.randrange(0, len(text)-1)
-            sentences.append(text[rd])
+        books = list(self.books.keys())
+        i = 0
+        while len(sentences) < count:
+            title = books[i]
+            s = self.get_random_sentence(title)
+            sentences.append(s)
+            i += 1
+            if i == len(books):
+                i = 0
         return sentences
 
     def get_random_sentence(self, title=None):
