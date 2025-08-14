@@ -1,14 +1,12 @@
 from src.helpers.messages import e, BELOW_MIN_SCORE
-from src.helpers.constants import MIN_SCORE, OPTION, ACCURACY, TYPING_RATE
+from src.helpers.constants import MIN_SCORE
 from src.config.config import c, OUTPUT_PATH, OUTPUT_FILE
-import numpy as np
 import random
     
-
 def format_stats(result):
-    return [f'~s0s~   {key}: {result[key]} \n' for key in result]
+    return [f'~.o.~   {key}: {result[key]} \n' for key in result]
 
-def write_text_to_output_file(text, output_folder):
+def write_text_to_output_file(text):
     output_file = open(c(OUTPUT_PATH) + OUTPUT_FILE, "+a")
     output_file.write(text + '\n\n')
 

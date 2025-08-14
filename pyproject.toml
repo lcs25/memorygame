@@ -5,3 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "memorygame"
 version = "0.1.0"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+flask = "^3.0"

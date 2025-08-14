@@ -2,25 +2,38 @@
 COMPARISON_REGEX = r"[^.]* like\sa [^.]*\."
 
 # game steps
+START = 'start'
 SUBMISSION = 'submission'
 NEXT_ROUND = 'next_round'
 CHOICES = 'choices'
 SCORE = 'score'
-PICK = 'pick'
+READY = 'ready'
+STATS = 'stats'
+SAVE = 'save'
+
+# storage keys
+ACCURACY = 'accuracy'
+TYPING_RATE = 'typing_rate'
+INVALID_ROUNDS = 'invalid_rounds'
+MIN_SCORE = 50
 
 # misc
 NXT = 'next'
 EXT = 'exit'
+SAVE = 'save'
 IO = 'io'
 BASE_IO = 'base'
 INT = 'int'
 STRING = 'string'
 LIST = 'list'
 SENTENCE = 'sentence'
+
+#ui
 OPTION = 'option'
 WORDS_PER_MINUTE = 'words per minute'
 
 # config key words
+PLAYER = 'player'
 OUTPUT_PATH = 'output_path'
 LIBRARY_PATH = 'library_path'
 MAX_ATTEMPTS = 'max_attempts'

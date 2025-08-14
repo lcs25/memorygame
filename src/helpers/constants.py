@@ -1,6 +1,3 @@
-# regex
-COMPARISON_REGEX = r"[^.]* like\sa [^.]*\."
-
 # game steps
 START = 'start'
 SUBMISSION = 'submission'
@@ -11,11 +8,7 @@ READY = 'ready'
 STATS = 'stats'
 SAVE = 'save'
 
-# storage keys
-ACCURACY = 'accuracy'
-TYPING_RATE = 'typing_rate'
-INVALID_ROUNDS = 'invalid_rounds'
-MIN_SCORE = 50
+MOVES = [START, SUBMISSION, NEXT_ROUND, CHOICES, SCORE, READY, STATS, SAVE]
 
 # misc
 NXT = 'next'
@@ -28,11 +21,11 @@ STRING = 'string'
 LIST = 'list'
 SENTENCE = 'sentence'
 
-#ui
+# ui
 OPTION = 'option'
 WORDS_PER_MINUTE = 'words per minute'
 
-# config key words
+# config key 
 PLAYER = 'player'
 OUTPUT_PATH = 'output_path'
 LIBRARY_PATH = 'library_path'
@@ -41,3 +34,8 @@ PASSAGES_PER_ROUND = 'passages_per_round'
 PASSAGE_MIN_LENGTH = 'passage_min_length'
 ROUNDS_PER_GAME = 'rounds_per_game'
 
+# stats and scoring keys
+ACCURACY = 'accuracy'
+TYPING_RATE = 'typing_rate'
+INVALID_ROUNDS = 'invalid_rounds'
+MIN_SCORE = 50

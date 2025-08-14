@@ -12,7 +12,7 @@ def e(key):
 def _e(key):
     return _ERRORS[key]
 
-INVALID_PICK = 'invalid_pick'
+# INVALID_PICK = 'invalid_pick'
 INPUT = 'input'
 ATTEMPTS = 'attempts'
 GENERATION = 'generation'
@@ -43,7 +43,6 @@ STEP_PROMPTS = {
     NEXT_ROUND: "\nNext round?",
     SAVE: 'Save? (y|anything else)'
 }
-
 
 
 

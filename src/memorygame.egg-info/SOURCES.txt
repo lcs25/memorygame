@@ -9,8 +9,9 @@ src/__init__.py
 src/config/config.py
 src/helpers/__init__.py
 src/helpers/constants.py
+src/helpers/json.py
 src/helpers/messages.py
-src/helpers/scoring.py
+src/helpers/stats_and_scoring.py
 src/helpers/text_parsing.py
 src/memorygame.egg-info/PKG-INFO
 src/memorygame.egg-info/SOURCES.txt

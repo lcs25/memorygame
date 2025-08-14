@@ -1,4 +1,4 @@
-from src.helpers.scoring import format_options, score_attempt, format_stats
+from src.helpers.stats_and_scoring import format_options, score_attempt, format_stats
 from src.helpers.constants import ACCURACY, TYPING_RATE, SENTENCE, SUBMISSION, SCORE, WORDS_PER_MINUTE
 
 class Round:

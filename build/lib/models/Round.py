@@ -1,4 +1,4 @@
-from src.helpers.scoring import parse_results, parse_options, score_attempt
+from src.helpers.stats_and_scoring import parse_results, parse_options, score_attempt
 
 class Round:
     def __init__(self):

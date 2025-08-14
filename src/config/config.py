@@ -16,5 +16,6 @@ game_configs = {
     IO: BASE_IO,
 }
 
+
 def c(key):
     return game_configs[key]

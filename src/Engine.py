@@ -2,8 +2,8 @@ from src.BaseIO import BaseIO, Message
 from src.ConsoleIO import ConsoleIO
 from src.Library import Library
 from src.Round import Round
-from src.helpers.scoring import format_stats, percent_change
-from src.helpers.constants import LIBRARY_PATH, OUTPUT_PATH, IO, BASE_IO, EXT, NXT, PLAYER, CHOICES, READY, SUBMISSION, \
+from src.helpers.stats_and_scoring import format_stats, percent_change
+from src.helpers.constants import LIBRARY_PATH, MOVES, OUTPUT_PATH, IO, BASE_IO, EXT, NXT, PLAYER, CHOICES, READY, SUBMISSION, \
     SCORE, NEXT_ROUND, SAVE, ACCURACY, TYPING_RATE, PASSAGES_PER_ROUND, ROUNDS_PER_GAME, STATS, INVALID_ROUNDS
 
 from src.helpers.messages import e, p
@@ -27,30 +27,51 @@ class GameEngine:
         self.round_count = c(ROUNDS_PER_GAME)
         self.player = c(PLAYER)
         self.output_path = c(OUTPUT_PATH)
+        self.moves = {0: self.show_options, 
+         1: self.prompt_submission, 
+         2: self.show_round_stats,
+         3: self.prompt_next_round,
+         4: self.prompt_stats_and_save}
+        self.move_id = None
+    
+    
+    def play(self, round_data):
+        curr_move = self.update_move()
+        curr_func = MOVES[curr_move]
+        res, err = curr_func(round_data)
+        if err:
+            msg = Message(txt=e(MOVES.index(curr_move)))
+            error_msg = {"m": msg, "e": err}
+            return error_msg
+        return  res
+    
+    def update_move(self, data):
+        if self.move_id == None:
+            self.move_id = 0
         
-    def play(self):
+        curr = self.move_id 
+        if curr == MOVES.index(SAVE):
+            self.move_id = None
+            return curr
+        self.move_id  += 1
+        if self.move_id == MOVES.index(SAVE):
+            if len(self.rounds) < (self.round_count):
+                self.move_id = 0
+        return curr
+
+    def start(self):
         ext = False
         count = 0
-        while not ext == EXT and count < (self.round_count):
-            count += 1
-            curr_round = self.generate_round()
-
-            err = self.show_options(curr_round)
-            if err:
-                print(err)
-                msg = Message(txt=e(CHOICES))
-                self.io.log(msg, err)
-                return True
-
-            self.io.clear()
-            err = self.prompt_submission(curr_round)
+        while not ext == EXT and len(self.rounds) < (self.round_count):
+            self.play()
+            err = self.prompt_submission(self.curr_round)
             if err:
                 msg = Message(txt=e(SUBMISSION))
                 self.io.log(msg, err)
                 continue
 
             self.io.clear()
-            err = self.show_round_stats(curr_round)
+            err = self.show_round_stats(self.curr_round)
             if err:
                 msg = Message(txt=e(SCORE))
                 self.io.log(err, msg)
@@ -73,57 +94,55 @@ class GameEngine:
             
         return False
     
-    def show_game_stats(self):
+    def prompt_stats_and_save(self, data):
         res = self.generate_game_stats(True)
         msg = Message(txt=res)
-        err = self.io.post(msg)
-        if err:
-            return err
         msg = Message(txt=p(SAVE))
-        save, err = self.io.request(msg)
-        if err:
-            return err
-        if save == '':
-            return self.save()
-        return err
+        return msg, err
+    
+    def process_save(self, data):
+        return '', None
 
-    def show_options(self, curr_round):
+    def show_options(self):
+        curr_round = self.generate_round()
         r_sentences = self.library.get_random_sentences(c(PASSAGES_PER_ROUND))
         curr_round.set_sentences(r_sentences)
         msg = Message(round_indicator=self.generate_round_indicator(), txt=curr_round.get_sentences(True))
-        err = self.io.post(msg)
-        if err:
-            return err
         msg = Message(round_indicator=self.generate_round_indicator(), txt=(p(READY)))
-        _, err = self.io.request(msg)
-        return err
+        return msg, None
+    
+    def clear(self, data):
+        return 'clear', None
 
-    def show_round_stats(self, curr_round):
+    def show_round_stats(self, data):
+        curr_round = self.get_round()
         stats = curr_round.generate_round_stats()
         msg = Message(round_indicator=self.generate_round_indicator(), txt=stats)
-        err = self.io.post(msg)
-        return err
+        return msg, None
 
-    def prompt_choice_helper(self, choice_prompt):
-        msg = Message(round_indicator=self.generate_round_indicator(),txt=choice_prompt)
-        pick, err = self.io.request(msg)
-        valid_pick, err = self.validate_pick(pick)
-        return valid_pick, err
-
-    def prompt_submission(self, curr_round):
+    def prompt_submission(self, data):
         msg = Message(round_indicator=self.generate_round_indicator(),txt=p(SUBMISSION))
-        submission, time_elapsed, err = self.io.request_with_time(msg)
+        return msg, None
+
+    def process_submission(self, data):
+        submission, time_elapsed = data[USER_INPUT], data[TIME]
         if err:
             return err
+        curr_round = self.get_round()
         curr_round.set_submission(submission, time_elapsed)
         err = curr_round.score_round()
-        return err
+        return '', err
 
-    def prompt_next_round(self):
+    def prompt_next_round(self, data):
         msg = Message(round_indicator=self.generate_round_indicator(),txt=p(NEXT_ROUND))
-        user_input, err = self.io.request(msg)
-        return user_input, err
+        return msg, None
     
+    def process_next_round(self, data):
+        ext = data[USER_INPUT]
+        if ext == 'exit':
+            self.move_id = MOVES.index(SAVE)
+        return '', None
+
     def generate_round_indicator(self):
         round_info = f"( {len(self.rounds)} / {self.round_count} ) "
         return round_info
@@ -164,33 +183,3 @@ class GameEngine:
         stats = self.generate_game_stats(False)
         err = save_json(player_file, stats)
         return err
-
-    
-            # _, err = self.prompt_choice(curr_round, True)
-            # if err:
-            #     msg = e(PICK)
-            #     self.io.log(msg, err)
-            #     return True
-
-                # def prompt_choice(self, curr_round, retry=False):
-    #     pick, err = self.prompt_choice_helper(p(PICK))
-    #     if err and retry:
-    #         attempts = 1
-    #         while err and attempts <= c(MAX_ATTEMPTS):
-    #             attempts += 1
-    #             self.io.clear()
-    #             pick, err = self.prompt_choice_helper(str(err) + p(INVALID_PICK))
-    #     if not err:
-    #         curr_round.set_pick(pick)
-    #         return None, err
-    #     return pick, err
-
-        # def validate_pick(self, pick):
-    #     try:
-    #         pick = int(pick)
-    #         if 0 <= pick < c(PASSAGES_PER_ROUND):
-    #             return pick, None
-    #         return None, ValueError(e(RANGE).format(pick, self.choice_range))
-    #     except ValueError:
-    #         res, err = None, ValueError(e(WRONG_TYPE).format(pick, self.choice_range))
-    #         return res, err
